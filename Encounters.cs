@@ -57,12 +57,16 @@ namespace WildWest
                     Program.currentPlayer.Health -= damage;
                     h -= attack;
                     Console.WriteLine("");
+                    Console.WriteLine("Press Enter to continue...");
                     Console.ReadKey();
+                    Console.Clear();
                 }
                 else if (input.ToLower() == "d" || input.ToLower() == "defend")
                 {
                     //Defend
                     Console.Clear();
+
+                    Console.WriteLine($"You defend yourself while {n} prepares to attack.");
 
                 }
                 else if (input.ToLower() == "r" || input.ToLower() == "run")
@@ -84,7 +88,9 @@ namespace WildWest
                         Console.WriteLine($"You lose {damage} health points and are unable to escape.");
                         Program.currentPlayer.Health -= damage;
                         Console.WriteLine("");
+                        Console.WriteLine("Press Enter to continue...");
                         Console.ReadKey();
+                        Console.Clear();
                     }
                     else
                     {
@@ -93,7 +99,9 @@ namespace WildWest
                         Console.WriteLine($"{Program.currentPlayer.WhiskeyBottles} bottles of whiskey remaining.");
                         DidPlayerRun = "yes";
                         Console.WriteLine("");
+                        Console.WriteLine("Press Enter to continue...");
                         Console.ReadKey();
+                        Console.Clear();
                         h = 0;
                     }
                 }
@@ -111,7 +119,9 @@ namespace WildWest
                         Console.WriteLine($"{n} attacks you while you were searching for whiskey and you lose {damage} health!");
                         Program.currentPlayer.Health -= damage;
                         Console.WriteLine("");
+                        Console.WriteLine("Press Enter to continue...");
                         Console.ReadKey();
+                        Console.Clear();
                     }
                     else
                     {
@@ -123,7 +133,9 @@ namespace WildWest
                         Console.WriteLine($"{Program.currentPlayer.WhiskeyBottles} bottles of whiskey remaining.");
                         Program.currentPlayer.Health += healthP;
                         Console.WriteLine("");
+                        Console.WriteLine("Press Enter to continue...");
                         Console.ReadKey();
+                        Console.Clear();
                     }
                 }
             }
