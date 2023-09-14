@@ -9,24 +9,24 @@ namespace WildWest
     internal class Enemies
     {
         public int Id { get; set; }
-        public string name { get; set; }
-        public int health { get; set; }
-        public int money { get; set; }
-        public int damage { get; set; }
+        public string Name { get; set; }
+        public int Health { get; set; }
+        public int Money { get; set; }
+        public int Damage { get; set; }
 
         public string DisplayString { get { return this.ToString(); } }
 
         public Enemies(string Name, int Health, int Money, int Damage)
         {
-            this.name = Name;
-            this.health = Health;
-            this.money = Money;
-            this.damage = Damage;
+            this.Name = Name;
+            this.Health = Health;
+            this.Money = Money;
+            this.Damage = Damage;
         }
 
         public override string ToString()
         {
-            return $"Name: {name}, Health: {health}, Money: {money}, Damage: {damage}.";
+            return $"Name: {Name}, Health: {Health}, Money: {Money}, Damage: {Damage}.";
         }
     }
 }

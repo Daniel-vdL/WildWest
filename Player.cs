@@ -8,11 +8,12 @@ namespace WildWest
 {
     internal class Player
     {
-        public string name;
-        public int health = 15;
-        public int money = 5;
-        public int damage = 1;
-        public int armor = 5;
+        public string Name;
+        public int Health = 15;
+        public int Money = 5;
+        public int Damage = 1;
+        public int Armor = 5;
+        public int WhiskeyBottles = 5;
 
     }
 }

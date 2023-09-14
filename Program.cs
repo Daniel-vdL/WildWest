@@ -15,27 +15,29 @@
         static void Main(string[] args)
         {
             Start();
-
+            Encounters.Encounter1();
         }
 
         static void Start()
         {
             Npc npc1 = new Npc();
-            npc1.name = "John";
-            npc1.health = 50;
-            npc1.money = 150;
-            npc1.damage = 5;
+            npc1.Name = "John";
+            npc1.Health = 50;
+            npc1.Money = 150;
+            npc1.Damage = 5;
 
             Console.WriteLine("WildWest Adventure");
             Console.WriteLine("Name:");
-            currentPlayer.name = Console.ReadLine();
-            Console.WriteLine("Fill in start of story here!");
+            currentPlayer.Name = Console.ReadLine();
+            Console.Clear();
+            Console.WriteLine("");
             
-            if (currentPlayer.name == "")
+            if (currentPlayer.Name == "")
                 Console.WriteLine("You don't have a name? Strange...");
 
             else
-                Console.WriteLine($"Your name is {currentPlayer.name}");
+                Console.WriteLine($"Your name is {currentPlayer.Name}");
+            Console.ReadKey();
 
         }
     }

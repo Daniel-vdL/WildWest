@@ -8,9 +8,9 @@ namespace WildWest
 {
     internal class Npc
     {
-        public string name { get; set; }
-        public int health { get; set; }
-        public int money { get; set; }
-        public int damage { get; set; }
+        public string Name { get; set; }
+        public int Health { get; set; }
+        public int Money { get; set; }
+        public int Damage { get; set; }
     }
 }
