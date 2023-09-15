@@ -8,14 +8,14 @@ namespace WildWest
         public static Player currentPlayer = new Player();
 
         //Create List of Enemies
-        public static List<Enemies> EnemyList = new List<Enemies>
+        public static List<Enemies> enemyList = new List<Enemies>
         {
             new Enemies("One shot Bill", 15, 100, 5),
             new Enemies("George", 15, 150, 5),
         };
 
         //Create List of Npcs
-        public static List<Npc> NpcList = new List<Npc>()
+        public static List<Npc> npcList = new List<Npc>()
         {
             new Npc("Jason", 50, 100, 10),
             new Npc("Dead Eye Jake", 15, 150, 5),
@@ -29,9 +29,9 @@ namespace WildWest
             //Starts Encounter1
             var encounter1 = new Encounters();
             encounter1.Name = "Battle";
-            encounter1.EnemyName = Program.EnemyList[0].Name;
-            encounter1.EnemyHealth = Program.EnemyList[0].Health;
-            encounter1.EnemyPower = Program.EnemyList[0].Damage;
+            encounter1.EnemyName = Program.enemyList[0].Name;
+            encounter1.EnemyHealth = Program.enemyList[0].Health;
+            encounter1.EnemyPower = Program.enemyList[0].Damage;
             encounter1.DidPlayerRun = "";
             Console.WriteLine("Encounter!");
             Console.WriteLine("");
@@ -50,7 +50,6 @@ namespace WildWest
             }
             else
             {
-
                 Console.WriteLine("You died!");
                 return;
             }

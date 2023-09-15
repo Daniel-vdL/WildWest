@@ -67,7 +67,17 @@ namespace WildWest
                     Console.Clear();
 
                     Console.WriteLine($"You defend yourself while {n} prepares to attack.");
-
+                    int damage = (p/4) - Program.currentPlayer.Armor;
+                    if (damage < 0)
+                        damage = 0;
+                    int attack = rand.Next(0, Program.currentPlayer.Damage)/2;
+                    Console.WriteLine($"You lose {damage} health points and deal {attack} damage");
+                    Program.currentPlayer.Health -= damage;
+                    h -= attack;
+                    Console.WriteLine("");
+                    Console.WriteLine("Press Enter to continue...");
+                    Console.ReadKey();
+                    Console.Clear();
                 }
                 else if (input.ToLower() == "r" || input.ToLower() == "run")
                 {
@@ -139,7 +149,7 @@ namespace WildWest
                     }
                 }
             }
-            while (this.EnemyHealth < 0 | Program.currentPlayer.Health < 0)
+            while (this.EnemyHealth < 0 || Program.currentPlayer.Health < 0)
             {
                 return;
             }

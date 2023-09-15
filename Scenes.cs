@@ -25,25 +25,39 @@ namespace WildWest
                 Console.WriteLine("I guess we will name you Nameless Noob");
                 Program.currentPlayer.Name = "Nameless Noob";
                 Console.WriteLine("");
-
-
+                Console.WriteLine("Press Enter to continue...");
+                Console.WriteLine("");
+                Console.ReadKey();
+                Console.Clear();
             }
             else
             {
                 Console.WriteLine($"Your name is {Program.currentPlayer.Name}");
+                Console.WriteLine("Not the name I would have picked but... it will do.");
+                Console.WriteLine("");
+                Console.WriteLine("Press Enter to continue...");
+                Console.WriteLine("");
+                Console.ReadKey();
+                Console.Clear();
             }
 
+            Console.WriteLine($"Welcome to the WildWest {Program.currentPlayer.Name}!");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("Press Enter to continue...");
+            Console.WriteLine("");
             Console.ReadKey();
+            Console.Clear();
 
         }
 
         public static void Scene1()
         {
-            Console.WriteLine($"You defeated {Program.EnemyList[0].Name}! ");
+            Console.WriteLine($"You defeated {Program.enemyList[0].Name}! ");
         }
         public static void Scene1Fled() 
         {
-            Console.WriteLine($"You ran away from {Program.EnemyList[0].Name}. ");
+            Console.WriteLine($"You ran away from {Program.enemyList[0].Name}. ");
         }
     }
 }
