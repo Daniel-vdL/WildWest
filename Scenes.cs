@@ -70,6 +70,7 @@ namespace WildWest
             else if (choice.ToLower() == "b")
             {
                 Console.Clear();
+                Program.enemyList[0].Name = "???";
                 Console.WriteLine($"{Program.currentPlayer.Name}: 'Get out of my face you weirdo'");
                 Console.WriteLine("The bandit looks confused and a little hurt.");
                 Console.WriteLine("The bandit takes 5 points of emotional damage.");

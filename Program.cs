@@ -42,12 +42,12 @@ namespace WildWest
                 Console.Clear();
                 encounter1.Combat();
 
-                if (currentPlayer.Health > 0 && encounter1.DidPlayerRun == "")
+                if (encounter1.DidPlayerRun == "")
                 {
                     //Starts Scene1
                     Scenes.Scene1();
                 }
-                else if (currentPlayer.Health > 0 && encounter1.DidPlayerRun == "yes")
+                else if (encounter1.DidPlayerRun == "yes")
                 {
                     Scenes.Scene1Fled();
                 }
