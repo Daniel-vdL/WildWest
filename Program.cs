@@ -25,34 +25,35 @@ namespace WildWest
         static void Main(string[] args)
         {
             Scenes.Start();
-            
-            //Starts Encounter1
-            var encounter1 = new Encounters();
-            encounter1.Name = "Battle";
-            encounter1.EnemyName = Program.enemyList[0].Name;
-            encounter1.EnemyHealth = Program.enemyList[0].Health;
-            encounter1.EnemyPower = Program.enemyList[0].Damage;
-            encounter1.DidPlayerRun = "";
-            Console.WriteLine("Encounter!");
-            Console.WriteLine("");
-            Console.ReadKey();
-            Console.Clear();
-            encounter1.Combat();
 
-            if (currentPlayer.Health > 0 && encounter1.DidPlayerRun == "")
+            while (currentPlayer.Health > 0)
             {
-                //Starts Scene1
-                Scenes.Scene1();
+                //Starts Encounter1
+                var encounter1 = new Encounters();
+                encounter1.Name = $"Battle Against {Program.enemyList[0].Name}";
+                encounter1.EnemyName = Program.enemyList[0].Name;
+                encounter1.EnemyHealth = Program.enemyList[0].Health;
+                encounter1.EnemyPower = Program.enemyList[0].Damage;
+                encounter1.DidPlayerRun = "";
+                Console.WriteLine($"{encounter1.Name} Started!");
+                Console.WriteLine("");
+                Console.WriteLine("Press Enter to continue...");
+                Console.ReadKey();
+                Console.Clear();
+                encounter1.Combat();
+
+                if (currentPlayer.Health > 0 && encounter1.DidPlayerRun == "")
+                {
+                    //Starts Scene1
+                    Scenes.Scene1();
+                }
+                else if (currentPlayer.Health > 0 && encounter1.DidPlayerRun == "yes")
+                {
+                    Scenes.Scene1Fled();
+                }
             }
-            else if (encounter1.DidPlayerRun == "yes")
-            {
-                Scenes.Scene1Fled();
-            }
-            else
-            {
-                Console.WriteLine("You died!");
-                return;
-            }
+            Console.WriteLine("You died!");
+            return;
         }
     }
 }

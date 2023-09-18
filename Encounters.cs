@@ -48,7 +48,7 @@ namespace WildWest
                     //attack
                     Console.Clear();
 
-                    Console.WriteLine($" You attack the {n} with your Pistol");
+                    Console.WriteLine($" You attack the {n} with your Pistol.");
                     int damage = p - Program.currentPlayer.Armor;
                     if (damage < 0)
                         damage = 0;
@@ -71,7 +71,7 @@ namespace WildWest
                     if (damage < 0)
                         damage = 0;
                     int attack = rand.Next(0, Program.currentPlayer.Damage)/2;
-                    Console.WriteLine($"You lose {damage} health points and deal {attack} damage");
+                    Console.WriteLine($"You lose {damage} health points and deal {attack} damage.");
                     Program.currentPlayer.Health -= damage;
                     h -= attack;
                     Console.WriteLine("");
@@ -149,9 +149,24 @@ namespace WildWest
                     }
                 }
             }
-            while (this.EnemyHealth < 0 || Program.currentPlayer.Health < 0)
+            if (h <= 0 && Program.currentPlayer.Health >= 0 && DidPlayerRun == "") 
             {
-                return;
+                int coins = rand.Next(10, 50);
+                int whiskeybottles = rand.Next(1, 5);
+                Program.currentPlayer.Money = coins + Program.currentPlayer.Money;
+                Program.currentPlayer.WhiskeyBottles = whiskeybottles + Program.currentPlayer.WhiskeyBottles;
+                Console.WriteLine($"{n} dropped {coins} coins, and {whiskeybottles} bottles of whiskey!");
+                Console.WriteLine($"You now have {Program.currentPlayer.Money} coins and {Program.currentPlayer.WhiskeyBottles} whiskey bottles.");
+                Console.WriteLine("");
+                Console.WriteLine("Press Enter to continue...");
+                Console.ReadKey();
+                Console.Clear();
+            }
+            else
+            {
+                Console.WriteLine("Press Enter to continue...");
+                Console.ReadKey();
+                Console.Clear();
             }
         }
     }
