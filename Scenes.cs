@@ -10,9 +10,8 @@ namespace WildWest
     {
         static Random rand = new Random();
 
-        public static void Start()
+        public static void NewStart()
         {
-
             string choice = "";
 
             Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -29,6 +28,8 @@ namespace WildWest
                 Program.currentPlayer.Name = "Nameless Noob";
                 Console.WriteLine("");
                 Console.WriteLine($"Welcome to the WildWest {Program.currentPlayer.Name}!");
+                Console.WriteLine("This is a text based game so you will be mostly reading, boring right?");
+                Console.WriteLine("");
                 Console.WriteLine("");
                 Console.WriteLine("Press Enter to continue...");
                 Console.WriteLine("");
@@ -86,6 +87,14 @@ namespace WildWest
                 Console.WriteLine("You fall down and everything slowly starts to fade away...");
                 Program.currentPlayer.Health = 0;
             }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("You just stand still and stare at the bandit saying nothing");
+                Console.WriteLine("The bandit gets angry and stabs you.");
+                Console.WriteLine("You fall down and everything slowly starts to fade away...");
+                Program.currentPlayer.Health = 0;
+            }
             Console.WriteLine("");
             Console.WriteLine("Press Enter to continue...");
             Console.ReadKey();
@@ -95,12 +104,24 @@ namespace WildWest
 
         public static void Scene1()
         {
-            Console.WriteLine($"You defeated {Program.enemyList[0].Name}! ");
-            
+            Console.WriteLine($"You defeated {Program.enemyList[0].Name} and leveled up! ");
+            Program.currentPlayer.Level += 1;
+            Console.WriteLine($"You are now level {Program.currentPlayer.Level}.");
+            Program.currentPlayer.MaxHealth *= Program.currentPlayer.Level;
+            Program.currentPlayer.Health = Program.currentPlayer.MaxHealth;
+            Program.currentPlayer.Damage += Program.currentPlayer.Level;
+            Console.WriteLine($"Health: {Program.currentPlayer.Health}.");
+            Console.WriteLine($"Damage: {Program.currentPlayer.Damage}.");
+            Console.WriteLine("");
+            Console.WriteLine("Press Enter to continue...");
+            Console.ReadKey();
+            Console.Clear();
+
         }
         public static void Scene1Fled() 
         {
             Console.WriteLine($"You ran away from {Program.enemyList[0].Name}. ");
+
         }
     }
 }

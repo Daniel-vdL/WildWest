@@ -14,6 +14,7 @@ namespace WildWest
         public string Name { get; set; }
         public string EnemyName { get; set; }
         public int EnemyHealth { get; set; }
+        public int EnemyMaxHealth { get; set; }
         public int EnemyPower { get; set; }
         public string DidPlayerRun { get; set; }
 
@@ -24,15 +25,17 @@ namespace WildWest
             string n = "";
             int p = 0;
             int h = 0;
+            int mh = 0;
 
             n = this.EnemyName;
             p = this.EnemyPower;
             h = this.EnemyHealth;
+            mh = this.EnemyMaxHealth;
 
             while (h > 0 && Program.currentPlayer.Health > 0)
             {
                 Console.WriteLine(n);
-                Console.WriteLine($"Power: {p} | Health: {h}");
+                Console.WriteLine($"Power: {p} | Health: {h}/{mh}");
                 Console.WriteLine("");
                 Console.WriteLine("=====================");
                 Console.WriteLine("| (A)ttack (D)efend |");
@@ -40,7 +43,8 @@ namespace WildWest
                 Console.WriteLine("=====================");
                 Console.WriteLine("");
                 Console.WriteLine(Program.currentPlayer.Name);
-                Console.WriteLine($"Health:  {Program.currentPlayer.Health} | Whiskey Bottles: {Program.currentPlayer.WhiskeyBottles}");
+                Console.WriteLine($"Health:  {Program.currentPlayer.Health}/{Program.currentPlayer.MaxHealth} | Whiskey Bottles: {Program.currentPlayer.WhiskeyBottles}");
+                Console.WriteLine("Press i to enter your inventory!");
 
                 string input = Console.ReadLine();
                 if (input.ToLower() == "a" || input.ToLower() == "attack")
@@ -48,7 +52,7 @@ namespace WildWest
                     //attack
                     Console.Clear();
 
-                    Console.WriteLine($" You attack the {n} with your Pistol.");
+                    Console.WriteLine($" You attack {n} with your Pistol.");
                     int damage = p - Program.currentPlayer.Armor;
                     if (damage < 0)
                         damage = 0;
@@ -123,11 +127,24 @@ namespace WildWest
                     if(Program.currentPlayer.WhiskeyBottles == 0)
                     {
                         Console.WriteLine("You reach into your satchel but you notice you ran out of whiskey. So sad...");
+
                         int damage = p - Program.currentPlayer.Armor;
+
                         if(damage < 0) 
                            damage = 0;
+
                         Console.WriteLine($"{n} attacks you while you were searching for whiskey and you lose {damage} health!");
+
                         Program.currentPlayer.Health -= damage;
+
+                        Console.WriteLine("");
+                        Console.WriteLine("Press Enter to continue...");
+                        Console.ReadKey();
+                        Console.Clear();
+                    }
+                    else if(Program.currentPlayer.Health >= Program.currentPlayer.MaxHealth)
+                    {
+                        Console.WriteLine("You are already at full health...");
                         Console.WriteLine("");
                         Console.WriteLine("Press Enter to continue...");
                         Console.ReadKey();
@@ -136,22 +153,40 @@ namespace WildWest
                     else
                     {
                         Console.WriteLine("You grab a bottle of whiskey and you drink it all in one go. Good for you buddy...");
+
                         int healthP = 10;
+
                         Console.WriteLine($"You gain {healthP} health points!");
                         Console.WriteLine("");
+
                         Program.currentPlayer.WhiskeyBottles -= 1;
+
                         Console.WriteLine($"{Program.currentPlayer.WhiskeyBottles} bottles of whiskey remaining.");
+
                         Program.currentPlayer.Health += healthP;
+                        if ( Program.currentPlayer.Health >= Program.currentPlayer.MaxHealth)
+                        {
+                            Program.currentPlayer.Health = Program.currentPlayer.MaxHealth;
+                        }
+
                         Console.WriteLine("");
                         Console.WriteLine("Press Enter to continue...");
                         Console.ReadKey();
                         Console.Clear();
                     }
                 }
+                else if (input.ToLower() == "i" || input.ToLower() == "inventory")
+                {
+                    GameLogic.Inventory();
+                    Console.WriteLine("");
+                    Console.WriteLine("Press Enter to continue...");
+                    Console.ReadKey();
+                    Console.Clear();
+                }
             }
             if (h <= 0 && Program.currentPlayer.Health >= 0 && DidPlayerRun == "") 
             {
-                int coins = rand.Next(10, 50);
+                int coins = Program.currentPlayer.Getcoins();
                 int whiskeybottles = rand.Next(1, 5);
                 Program.currentPlayer.Money = coins + Program.currentPlayer.Money;
                 Program.currentPlayer.WhiskeyBottles = whiskeybottles + Program.currentPlayer.WhiskeyBottles;
