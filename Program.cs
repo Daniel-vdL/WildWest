@@ -63,7 +63,7 @@ namespace WildWest
                 if (currentPlayer.Health > 0 && encounter1.DidPlayerRun == "")
                 {
                     //Starts Scene1
-                    Console.Clear();
+                    Console.WriteLine("");
                     Scenes.Scene1();
                 }
                 else if (currentPlayer.Health > 0 && encounter1.DidPlayerRun == "yes")
@@ -73,22 +73,36 @@ namespace WildWest
                     Scenes.Scene1Fled();
                 }
 
-                var encounter2 = new Encounters();
-                encounter2.Name = $"Battle Against {Program.enemyList[1].Name}";
-                encounter2.EnemyName = Program.enemyList[1].Name;
-                encounter2.EnemyHealth = Program.enemyList[1].Health;
-                encounter2.EnemyMaxHealth = Program.enemyList[1].MaxHealth;
-                encounter2.EnemyPower = Program.enemyList[1].Damage;
-                encounter2.DidPlayerRun = "";
-                currentPlayer.Mission = $"Defeat {enemyList[1].Name}";
-
-                Console.WriteLine($"{encounter2.Name} Started!");
+                Console.WriteLine("You buy a whiskey and celebrate your win with the bartender.");
+                Console.WriteLine("You slowly fall asleep...");
                 Console.WriteLine("");
-                Console.WriteLine("Press Enter to continue...");
-                Console.ReadKey();
-                Console.Clear();
+                Console.WriteLine("The End... For now?");
+                return;
 
-                encounter2.Combat();
+                //Console.Clear();
+                //Console.WriteLine("For help type 'h' or 'help' ");
+                //string input = Console.ReadLine();
+                //if (input.ToLower() == "h" || input.ToLower() == "help")
+                //{
+                //    GameLogic.Help();
+                //}
+
+                //var encounter2 = new Encounters();
+                //encounter2.Name = $"Battle Against {Program.enemyList[1].Name}";
+                //encounter2.EnemyName = Program.enemyList[1].Name;
+                //encounter2.EnemyHealth = Program.enemyList[1].Health;
+                //encounter2.EnemyMaxHealth = Program.enemyList[1].MaxHealth;
+                //encounter2.EnemyPower = Program.enemyList[1].Damage;
+                //encounter2.DidPlayerRun = "";
+                //currentPlayer.Mission = $"Defeat {enemyList[1].Name}";
+
+                //Console.WriteLine($"{encounter2.Name} Started!");
+                //Console.WriteLine("");
+                //Console.WriteLine("Press Enter to continue...");
+                //Console.ReadKey();
+                //Console.Clear();
+
+                //encounter2.Combat();
             }
 
             if(currentPlayer.Health <= 0) 

@@ -34,6 +34,10 @@ namespace WildWest
 
             while (h > 0 && Program.currentPlayer.Health > 0)
             {
+                Console.Clear();
+                Console.WriteLine("");
+                Console.WriteLine($"Current Mission: {Program.currentPlayer.Mission}");
+                Console.WriteLine("");
                 Console.WriteLine(n);
                 Console.WriteLine($"Power: {p} | Health: {h}/{mh}");
                 Console.WriteLine("");
@@ -199,8 +203,6 @@ namespace WildWest
             }
             else
             {
-                Console.WriteLine("Press Enter to continue...");
-                Console.ReadKey();
                 Console.Clear();
             }
         }

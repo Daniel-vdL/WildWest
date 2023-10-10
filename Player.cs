@@ -20,7 +20,7 @@ namespace WildWest
         public int Armor = 1;
         public int WhiskeyBottles = 5;
         public int Level = 1;
-        public string Mission = "";
+        public string Mission = "No mission yet...";
 
         public int Getcoins()
         {
